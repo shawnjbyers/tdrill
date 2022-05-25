@@ -1,0 +1,41 @@
+#!/usr/bin/env python3
+
+import random
+
+def get_random_time(): # -> tuple[str, str]
+    hour = random.randint(0, 23)
+    minute = random.randint(0, 59)
+    str_hour_24 = '{0:02d}'.format(hour)
+    str_minute = '{0:02d}'.format(minute)
+
+    str_24 = str_hour_24 + ':' + str_minute
+
+    if hour == 0:
+        hour_12 = 12
+        am_pm = 'am'
+    elif hour > 12:
+        hour_12 = hour - 12
+        am_pm = 'pm'
+    else:
+        hour_12 = hour
+        am_pm = 'am'
+
+    str_12 = str(hour_12) + ':' + str_minute + ' ' + am_pm
+
+    return str_24, str_12
+
+def drill_question(question: str, answer: str):
+    while True:
+        print('Q: ' + question)
+        line = input('A: ')
+
+        if line.strip() == answer:
+            print('Correct.')
+            break
+        else:
+            print('Try again.')
+
+if __name__ == '__main__':
+    while True:
+        t24, t12 = get_random_time()
+        drill_question(t12 + ' -> 24-hour time', t24)
