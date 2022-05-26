@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import random
+import sys
 
 def get_random_time(): # -> tuple[str, str]
     hour = random.randint(0, 23)
@@ -27,7 +28,11 @@ def get_random_time(): # -> tuple[str, str]
 def drill_question(question: str, answer: str):
     while True:
         print('Q: ' + question)
-        line = input('A: ')
+        try:
+            line = input('A: ')
+        except KeyboardInterrupt:
+            print('')
+            sys.exit(0)
 
         if line.strip() == answer:
             print('Correct.')
