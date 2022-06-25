@@ -18,6 +18,9 @@ def time12f(hour: int, minute: int) -> str:
     elif hour > 12:
         hour_12 = hour - 12
         am_pm = 'pm'
+    elif hour == 12:
+        hour_12 = 12
+        am_pm = 'pm'
     else:
         hour_12 = hour
         am_pm = 'am'
